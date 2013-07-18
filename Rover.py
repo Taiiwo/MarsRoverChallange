@@ -12,7 +12,7 @@ def locatechar(char,string): #prints the first location of a character in a stri
 		result = False
 	return result
 #data gathering and validation
-print "Please insert the coodinates of the top right most box."#This currently is used for nothing as I wasn't sure how it could be used.
+print "Please insert the coordinates of the top right most box."#This currently is used for nothing as I wasn't sure how it could be used.
 print "Space separated, eg: '5 5'"
 error = 1
 while error == 1:#This 'error' system is here to create a loop that is broken only by error = 0 at the end.
@@ -31,7 +31,7 @@ while error == 1:#This 'error' system is here to create a loop that is broken on
 	if error == 1:
 		print "Input invalid. Please read the instructions and try again."
 loop = 1
-rovers = []#createing rover location db
+rovers = []#creating rover location db
 rovers.append(0)
 compass = ('N','E','S','W')#This is used to convert 0, 1, 2, and 3 into directions and visa versa.
 while loop == 1:
@@ -62,7 +62,7 @@ while loop == 1:
 			error = 1
 			if debug == True:
 				print 3
-		#check syntax of current coodinates
+		#check syntax of current coordinates
 		
 		try:
 			cury = int(current[loc + 1:-2])
@@ -76,7 +76,7 @@ while loop == 1:
 		else:
 			print "Invalid input. Please read instructions and try again."
 	print "Finally, input the list of instructions you wish the rover to follow"
-	print "eg: 'LMRM' interperites to 'turn left, move,turn right, move'"
+	print "eg: 'LMRM' interprets to 'turn left, move,turn right, move'"
 	error = 1
 	while error == 1:
 		error = 0
@@ -169,5 +169,4 @@ while loop == 1:
 				loop = 0
 		else:
 			print "Please enter 'y' or 'n'"
-
 
