@@ -48,7 +48,6 @@ while loop == 1:
 			error = 1
 			if debug == True:
 				print 1
-		
 		if current[len(current)-2] != " " and error == 0:
 			error = 1
 			if debug == True:
@@ -63,7 +62,6 @@ while loop == 1:
 			if debug == True:
 				print 3
 		#check syntax of current coordinates
-		
 		try:
 			cury = int(current[loc + 1:-2])
 			curx = int(current[:loc])
@@ -126,29 +124,20 @@ while loop == 1:
 						if cury + 1 == i[1] and curx == i[0]:#Checks for rovers in the database
 							crash = 1#			That have the same coords and
 							#				flags 'crash'.
-				
-				cury = cury + 1
-				
+				cury = cury + 1	
 			if curdir == "E":
-			
 				for i in rovers:
 					if i != 0:
 						if curx + 1 == i[0] and cury == i[1]:#^
 							crash = 1
-				
 				curx = curx + 1
-
 			if curdir == "S":
-			
 				for i in rovers:
 					if i != 0:
 						if cury - 1 == i[1] and curx == i[0]:#^^
 							crash = 1
-				
 				cury = cury - 1
-
 			if curdir == "W":
-			
 				for i in rovers:
 					if i != 0:
 						if curx - 1 == i[0] and cury == i[1]:#^^^
@@ -156,8 +145,6 @@ while loop == 1:
 				curx = curx - 1
 			if crash == 1:#checks for crash flag, and prints location of crash.
 				print "The rover crashed at " + str(curx) + "," + str(cury)
-
-
 	rovers.append([curx,cury])#add final position to db
 	print str(curx) + " " + str(cury) + " " + curdir#print in syntax according to challenge.
 	loop2 = 1
