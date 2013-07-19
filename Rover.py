@@ -92,18 +92,18 @@ while loop == 1:
 		##right
 		if i == "r" or i == "R":
 			loop3 = -1
-			for i in compass:
+			for i in compass:#this basically just gets it's current direction as an integer instead of a letter.
 				loop3 = loop3 + 1
 				if i == curdir:
 					n = loop3 + 1
 					nn = 1
-			if nn != 1:
+			if nn != 1:#This was added before the data validation, and it just kept here for good measure.
 				print "Error: Invalid current direction"
-			if n >= 4:
+			if n >= 4:#this keeps n indexed within compass
 				n = 0
-			curdir = compass[n]
+			curdir = compass[n]#n is the integer that represents the direction
 		##left
-		if i == "l" or i == "L": 
+		if i == "l" or i == "L": #refer above for notation on 'left'
 			loop3 = -1
 			for i in compass:  
 				loop3 = loop3 + 1
@@ -118,14 +118,14 @@ while loop == 1:
 				print n
 			curdir = compass[n]
 		#move
-		if i == "m" or i == "M":
-			mtor = 1
+		if i == "m" or i == "M":#This could have probably been done in a more compact way.
 			crash = 0
 			if curdir == "N":
 				for i in rovers:
 					if i != 0:
-						if cury + 1 == i[1]:
-							crash = 1
+						if cury + 1 == i[1] and curx == i[0]:#Checks for rovers in the database
+							crash = 1#			That have the same coords and
+							#				flags 'crash'.
 				
 				cury = cury + 1
 				
@@ -133,7 +133,7 @@ while loop == 1:
 			
 				for i in rovers:
 					if i != 0:
-						if curx + 1 == i[0]:
+						if curx + 1 == i[0] and cury == i[1]:#^
 							crash = 1
 				
 				curx = curx + 1
@@ -142,7 +142,7 @@ while loop == 1:
 			
 				for i in rovers:
 					if i != 0:
-						if cury - 1 == i[1]:
+						if cury - 1 == i[1] and curx == i[0]:#^^
 							crash = 1
 				
 				cury = cury - 1
@@ -151,22 +151,21 @@ while loop == 1:
 			
 				for i in rovers:
 					if i != 0:
-						if curx - 1 == i[0]:
+						if curx - 1 == i[0] and cury == i[1]:#^^^
 							crash = 1
 				curx = curx - 1
-			if crash == 1:
+			if crash == 1:#checks for crash flag, and prints location of crash.
 				print "The rover crashed at " + str(curx) + "," + str(cury)
 
 
-	rovers.append([curx,cury])
-	print str(curx) + " " + str(cury) + " " + curdir
+	rovers.append([curx,cury])#add final position to db
+	print str(curx) + " " + str(cury) + " " + curdir#print in syntax according to challenge.
 	loop2 = 1
 	while loop2 == 1:
-		goagn = raw_input("Move another rover (y/n)?")
-		if goagn == "y" or goagn == "n":
+		goagn = raw_input("Move another rover (y/n)?")#asks to play again
+		if goagn == "y" or goagn == "n":#checks for valid input
 			loop2 = 0
 			if goagn == "n":
-				loop = 0
+				loop = 0#if no, unflags loop, turing off the loop.
 		else:
-			print "Please enter 'y' or 'n'"
-
+			print "Please enter 'y' or 'n'"#^^
